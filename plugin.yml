@@ -1,0 +1,11 @@
+name: AnotherReports
+main: xoapp\reports\Loader
+api: 5.0.0
+version: 1.0.0
+author: Xoapp
+
+permissions:
+  report.command:
+    default: true
+  report.admin.command:
+    default: op

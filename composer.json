@@ -1,0 +1,20 @@
+{
+  "name": "xoapp/another-reports",
+  "description": "description",
+  "minimum-stability": "stable",
+  "license": "proprietary",
+  "authors": [
+    {
+      "name": "xoapp",
+      "email": "tbralex7@gmail.com"
+    }
+  ],
+  "require-dev": {
+    "dktapps/pmforms": "dev-master",
+    "paroxity/commando": "dev-master"
+  },
+  "require": {
+    "pocketmine/pocketmine-mp": "^5.32.0",
+    "ext-curl": "*"
+  }
+}
