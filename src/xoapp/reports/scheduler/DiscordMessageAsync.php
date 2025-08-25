@@ -47,6 +47,7 @@ class DiscordMessageAsync extends AsyncTask
     private function send(string $url, mixed $message, bool $hasFile): array
     {
         $ch = curl_init($url);
+
         curl_setopt($ch, CURLOPT_POST, true);
         curl_setopt($ch, CURLOPT_RETURNTRANSFER, true);
         curl_setopt($ch, CURLOPT_SSL_VERIFYHOST, false);
@@ -55,11 +56,9 @@ class DiscordMessageAsync extends AsyncTask
         curl_setopt($ch, CURLOPT_NOSIGNAL, true);
         curl_setopt($ch, CURLOPT_POSTFIELDS, $message);
 
-        if (!$hasFile) {
-            curl_setopt($ch, CURLOPT_HTTPHEADER, ['Content-Type: application/json']);
-        } else {
-            curl_setopt($ch, CURLOPT_HTTPHEADER, ['Content-Type: multipart/form-data']);
-        }
+        $contentType = $hasFile ? 'Content-Type: multipart/form-data' : 'Content-Type: application/json';
+        curl_setopt($ch, CURLOPT_HTTPHEADER, [$contentType]);
+
         $ret = [curl_exec($ch), curl_getinfo($ch, CURLINFO_RESPONSE_CODE)];
         curl_close($ch);
 
