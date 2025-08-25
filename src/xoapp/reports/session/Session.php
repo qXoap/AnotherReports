@@ -76,6 +76,11 @@ class Session
     public function removeReports(string $id): void
     {
         unset($this->reports[$id]);
+
+        if ($this->playerData->exists($id)) {
+            $this->playerData->remove($id);
+            $this->playerData->save();
+        }
     }
 
     public function save(): void
